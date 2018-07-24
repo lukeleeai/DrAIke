@@ -1,0 +1,16 @@
+{
+  "name": "inmyposenet",
+  "version": "1.0.0",
+  "description": "This is the code for this [this](https://youtu.be/prswDGGmYaE) video on Youtube by Siraj Raval as part of the #InMyFeelingsChallenge dance competition. The challenge is to create your own AI to dance to this song and submit it via Twitter, Facebook, Youtube, Instagram, or LinkedIn (or all of them) using the #InMyFeelingsChallenge hashtag. There are 3 methods to do this",
+  "main": "camera.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compute-cosine-similarity": "^1.0.0",
+    "express": "^4.16.3"
+  }
+}
