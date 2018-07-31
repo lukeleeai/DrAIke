@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DrAIke - In My Feelings AI Challenge</title>
+    <script>
+    $(window).scroll(function () {
+      var percent = $(document).scrollTop() / ($('#section2').height() / 3);
+      $('#scrollDown').css('opacity', 1 - percent);
+    }); 
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="playground">
+        <div id='main' style='display:none'>
+            <video id="video" playsinline style=" -moz-transform: scaleX(-1)
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            display: none;
+            "  width="531" height="531">
+            </video>
+            <canvas id="output" width="531" height="531"/>
+        </div>
+
+        <video id="master" playsinline style="display: none;" src="../videos/drake_master.mp4" width="531" height="531">
+        </video>
+    </div>
+
+    <p class='score' id='wd_score'></p>
+    <p class='score' id='ed_score'></p>
+    <p class='vectors' id='poses'></p>
+
+
+    <!-- tutorial section -->
+
+    <div id="tutorial">
+    <section id="section1">
+        <h1 id="tuto1">Step 1. Stand in front of the webcam, and start dancing!</h1>
+        <!-- <img src="wakanda.png" alt="Fakanda Woeva!" width="50%"> -->
+        <div id="scrollDown">
+          <div id="rond"></div>
+        </div>
+    </section>
+    <section id="section2">
+        <h1 id="tuto2">Step 2. Copy DrAIke as much as you can to earn the score</h1>
+        <div id="scrollDown">
+          <div id="rond"></div>
+        </div>
+    </section>
+    <section id="section3">
+        <h1 id="tuto3">Step 3. DrAIke will show you funny videos depending on your score!</h1>
+        <div id="scrollDown">
+          <div id="rond"></div>
+        </div>
+    </section>
+    <section id="section4">
+        <div id="start_section">
+            <h1 id="tuto4">Now good luck! Please beat him.</h1>
+            <a id="start_button" onclick="bindPage()" class="button">I'M READY!</a>
+        </div>
+    </section>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.2/build/dat.gui.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/posenet"></script>
+    
+    <script src="../js/demo_util.js"></script>
+    <script src="../js/stats.min.js "></script>
+    <script src="../js/camera.js"></script>
+
+
+</body>
+
+</html>
