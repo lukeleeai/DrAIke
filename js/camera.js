@@ -307,6 +307,9 @@ var isPlay = false;
 var step = 0; 
 var cnt = 0;
 
+var start; 
+var end;
+
 function isStart(pose){
   playerPose = poseToVec(pose);
 
@@ -317,6 +320,7 @@ function isStart(pose){
       console.log('START');
       masterVideo.play();
       isPlay = true; 
+      start = new Date();
       return;
     }
   }
@@ -385,7 +389,9 @@ function detectPoseInRealTime(video, net) {
     poseVector = poseToVec(pose);
     poseVectors.push(poseVector);
 
-    document.getElementById('wd_score').innerHTML = 'Start: ' + isPlay + step;
+    // document.getElementById('wd_score').innerHTML = 'Start: ' + isPlay + step;
+
+    end = new Date(); 
 
     if(isPlay == false){
     	isStart(pose);
@@ -399,7 +405,7 @@ function detectPoseInRealTime(video, net) {
       eucDis = euclideanDistance(poseVector, array[step-70]);
 
       if(score > 2 && euclideanDistance(poseVectors[step-1], poseVectors[step-4]) < 2000){
-        document.getElementById('wd_score').innerHTML = 'MOVE!';
+        // document.getElementById('wd_score').innerHTML = 'MOVE!';
         score -= 2; 
       } 
 
@@ -412,24 +418,22 @@ function detectPoseInRealTime(video, net) {
       }
       
       if(step > 261){
-      	document.getElementById('poses').style.display = 'none';
+      	document.getElementById('score').style.display = 'none';
       } else{
-      	document.getElementById('poses').innerHTML = 'Score: ' + score;
+      	document.getElementById('score').innerHTML = 'Score: ' + score;
       }
-      document.getElementById('wd_score').innerHTML = 'ed: ' + eucDis;
-      document.getElementById('ed_score').innerHTML = 'Step: ' + step	
+      // document.getElementById('wd_score').innerHTML = 'ed: ' + eucDis;
+      // document.getElementById('ed_score').innerHTML = 'Step: ' + step	
 
       //2분 42초, 50
 
-      if(step == 451){ // 451
-        // document.getElementById('poses').innerHTML = JSON.stringify(poseVectors)
-        document.getElementById('poses').innerHTML = 'Well done!';
+      if(end - start >= 58000){ // video = 58 seconds. 
 	    localStorage.setItem("score", score);    
         window.open("result.html","_self")
         return; 
       }
     }
-    
+
     minPoseConfidence = Number(
       guiState.singlePoseDetection.minPoseConfidence);
     minPartConfidence = Number(
@@ -489,6 +493,7 @@ async function bindPage() {
   document.getElementById('start_button').style.display = 'none';
   document.getElementById('main').style.display = 'block';
   document.getElementById('master').style.display = 'block';
+  document.getElementById('score').style.display = 'block';
 
   let video;
 

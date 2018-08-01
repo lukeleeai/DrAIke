@@ -73,18 +73,17 @@ function setVideo(){
     video.style.display = 'block';
     
     if (score > 90) {
-        video.src = videos[0] + '.mp4'; 
+        video.src = '../videos/' + videos[0] + '.mp4'; 
     } else if (80 <= score) {
-        video.src = videos[1] + '.mp4';
+        video.src = '../videos/' + videos[1] + '.mp4';
     } else if (60 <= score) {
-        video.src = videos[2] + '.mp4';
+        video.src = '../videos/' + videos[2] + '.mp4';
     } else if (40 <= score) {
-        video.src = videos[3] + '.mp4';
+        video.src = '../videos/' + videos[3] + '.mp4';
     } else {
-        video.src = videos[4] + '.mp4';
+        video.src = '../videos/' + videos[4] + '.mp4';
     }
 }
-
 
 // display score here. 
 
